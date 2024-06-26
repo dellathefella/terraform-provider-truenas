@@ -1,9 +1,9 @@
-module github.com/dellathefella/terraform-provider-truenas v0.1.0
+module github.com/dellathefella/terraform-provider-truenas
 
 go 1.18
 
 require (
-	github.com/dellathefella/truenas-go-sdk v0.1.0
+	github.com/dellathefella/truenas-go-sdk v0.2.0
 	github.com/hashicorp/terraform-plugin-docs v0.13.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
 	github.com/stretchr/testify v1.7.2
