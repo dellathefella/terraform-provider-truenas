@@ -1,4 +1,4 @@
-module github.com/dariusbakunas/terraform-provider-truenas
+module github.com/dellathefella/terraform-provider-truenas
 
 go 1.18
 
