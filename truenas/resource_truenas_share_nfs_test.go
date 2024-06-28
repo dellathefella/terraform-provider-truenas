@@ -3,14 +3,15 @@ package truenas
 import (
 	"context"
 	"fmt"
+	"reflect"
+	"strconv"
+	"testing"
+
 	api "github.com/dellathefella/truenas-go-sdk"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/stretchr/testify/assert"
-	"reflect"
-	"strconv"
-	"testing"
 )
 
 func TestAccResourceTruenasShareNFS_basic(t *testing.T) {

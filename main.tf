@@ -19,10 +19,34 @@ provider "truenas" {
   base_url = "http://${var.TRUENAS_HOST_NAME}/api/v2.0"
 }
 
-data "truenas_dataset" "dataset" {
-  dataset_id = "della-pool-rust/backup"
-} 
+# data "truenas_dataset" "dataset" {
+#   dataset_id = "della-pool-rust/backup"
+# } 
 
-output test {
-  value       = data.truenas_dataset.dataset
+# output test {
+#   value       = data.truenas_dataset.dataset
+# }
+
+data "truenas_services" "svc" {
 }
+
+data "truenas_service" "svc_breakdown" {
+    for_each = {for k,element in data.truenas_services.svc.ids: k => element }
+    service_id = each.value
+}
+
+output test2 {
+  value       = data.truenas_service.svc_breakdown
+}
+
+# resource "truenas_user" "tu" {
+#   email             = "jake.della5@gmail.com"
+#   full_name         = "JDUrp"
+#   create_group      = true
+#   name              = "Jake_Della33"
+#   home_mode         = "0775"
+#   smb               = false
+#   sudo              = false
+#   password_disabled = false
+#   password = "Foobar"
+# }

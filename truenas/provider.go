@@ -2,6 +2,7 @@ package truenas
 
 import (
 	"context"
+
 	api "github.com/dellathefella/truenas-go-sdk"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -48,6 +49,7 @@ func Provider() *schema.Provider {
 			"truenas_network_configuration": dataSourceTrueNASNetworkConfiguration(),
 			"truenas_pool_ids":              dataSourceTrueNASPoolIDs(),
 			"truenas_service":               dataSourceTrueNASService(),
+			"truenas_services":              dataSourceTrueNASServices(),
 			"truenas_share_nfs":             dataSourceTrueNASShareNFS(),
 			"truenas_share_smb":             dataSourceTrueNASShareSMB(),
 			"truenas_vm":                    dataSourceTrueNASVM(),

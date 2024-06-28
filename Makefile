@@ -2,7 +2,7 @@ TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=dellathefella
 NAMESPACE=providers
 NAME=truenas
-BINARY=terraform-provider-${NAME}
+BINARY=terraform-provider-${NAME}.exe
 VERSION=0.1
 OS_ARCH=darwin_amd64
 

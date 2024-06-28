@@ -3,11 +3,12 @@ package truenas
 import (
 	"context"
 	"encoding/json"
+	"log"
+	"strconv"
+
 	api "github.com/dellathefella/truenas-go-sdk"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"log"
-	"strconv"
 )
 
 func resourceTrueNASUser() *schema.Resource {
@@ -90,9 +91,9 @@ func resourceTrueNASUser() *schema.Resource {
 			},
 			"shell": &schema.Schema{
 				Type:        schema.TypeString,
-				Description: "Specifies the shell executable for the user.",
+				Description: "Specifies the shell executable for the user. Valid options are /usr/sbin/nologin, /usr/sbin/tmux, /usr/sbin/zsh, /usr/sbin/sh, /usr/sbin/dash, /usr/sbin/rbash",
 				Optional:    true,
-				Default:     "/bin/sh",
+				Default:     "/usr/sbin/nologin",
 			},
 			"smb": &schema.Schema{
 				Type:        schema.TypeBool,
@@ -501,6 +502,7 @@ func expandUserUpdate(ctx context.Context, d *schema.ResourceData, m interface{}
 	if shell, ok := d.GetOk("shell"); ok {
 		input.Shell = getStringPtr(shell.(string))
 	}
+
 	if fullName, ok := d.GetOk("full_name"); ok {
 		input.FullName = getStringPtr(fullName.(string))
 	}
