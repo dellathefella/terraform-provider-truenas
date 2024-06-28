@@ -31,7 +31,7 @@ data "truenas_services" "svc" {
 }
 
 data "truenas_service" "svc_breakdown" {
-    for_each = {for k,element in data.truenas_services.svc.ids: k => element }
+    for_each = {for element in data.truenas_services.svc.ids: element => element }
     service_id = each.value
 }
 
